@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useState, useEffect} from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
@@ -11,6 +11,7 @@ import Grid from '@mui/material/Grid';
 const RegistrationForm = () => {
     const [open, setOpen] = React.useState(false);
 
+    const[data, setData] =useState([])
     const handleClickOpen = () => {
         setOpen(true);
     };
@@ -18,6 +19,17 @@ const RegistrationForm = () => {
     const handleClose = () => {
         setOpen(false);
     };
+
+    //  const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     if (Firstname && Lastname && Cultural && Emailid && Mobilenumber){
+    //         axios.post('https://fakestoreapi.com/products', formData)
+    //         .then(res => {
+    //         setData([...data, res.data]);           
+    //         setFormData(( Firstname:"", Lastname: "", Cultural:"", Emailid:"", Mobilenumber:""));
+    //         })
+    //         .catch(err => console.log(err))
+    //   };
 
     return (
         <div>
