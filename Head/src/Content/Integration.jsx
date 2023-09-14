@@ -33,7 +33,6 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     '&:nth-of-type(odd)': {
         backgroundColor: theme.palette.action.hover,
     },
-    // hide last border
     '&:last-child td, &:last-child th': {
         border: 0,
     },
@@ -45,16 +44,17 @@ function Integration() {
     const [data, setData] = useState([])
 
     const [formData, setFormData] = useState({
-        Firstname: "",
-        Lastname: "",
-        Cultural: "",
-        Emailid: "",
-        Mobilenumnber: "",
+        id: '',
+        price: '',
+        category: '',
+        title: '',
     });
 
     const [open, setOpen] = React.useState(false);
 
     const handleClickOpen = () => {
+        // setMode("Add New data");
+        setFormData({ price: "", category: "", title: "" });
         setOpen(true);
     };
 
@@ -72,6 +72,48 @@ function Integration() {
         setFormData(itemToEdit);
         handleDelete(index);
     }
+
+    const handleChange = (e) => {
+
+        setFormData({ ...formData, [e.target.id]: e.target.value });
+
+        console.log("Onchage")
+    };
+
+
+    // const handleSubmit = e => {
+    //     e.preventDefault()
+    //     console.log(data)
+    //     axios.post('https://fakestoreapi.com/products', useState)
+    //         .then((res) => {
+    //             setData((prevProducts) => [...prevProducts, res.data])
+    //             console.log(res)
+    //         })
+
+    //         .catch(error => {
+    //             console.log(error)
+    //         })
+
+    //     setOpen(false)
+    // }
+
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(formData); // Log the form data
+    
+        axios.post('https://fakestoreapi.com/products', formData)
+            .then((res) => {
+                console.log(res);
+                setData((prevProducts) => [...prevProducts, res.data]);
+                setFormData({ price: "", category: "", title: "" }); // Reset the form data
+                setOpen(false); // Close the dialog
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+
 
 
     useEffect(() => {
@@ -96,45 +138,74 @@ function Integration() {
                     <DialogTitle>Registration Form</DialogTitle>
                     <DialogContent>
                         <DialogContentText>
+
+
                             <div>
-                                <Grid container spacing={1} >
+                                <Grid container spacing={0.5} >
 
-                                    <Grid item xs={5}>
+                                    <form onSubmit={handleSubmit}>
+
+                                        {/* <Grid item xs={5}>
+                                   
                                         <label><b>ID</b></label>
+                                    <input
+                                        type="text"
+                                        id="id"
+                                        name="id"
+                                        value={formData.id}
+                                        onchange={handleChange}
+                                    />
+                                   
+                                    </Grid> */}
 
-                                        <TextField
-                                            required id="outlined-required"  />
-                                    </Grid>
+                                        <Grid item xs={5}>
+                                            <div>
+                                                <label><b>Price</b></label>
+                                                <input
+                                                    type="text"
+                                                    id="price"
+                                                    name="price"
+                                                    value={formData.price}
+                                                    onChange={handleChange}
+                                                />
+                                            </div>
+                                        </Grid>
 
-                                    <Grid item xs={5}>
-                                        <label><b>Price</b></label>
-                                        <TextField
-                                            required id="outlined-required"  />
-                                    </Grid>
+                                        <Grid item xs={5}>
+                                            <div>
+                                                <label><b>category</b></label>
+                                                <input
+                                                    type="text"
+                                                    id="category"
+                                                    name="category"
+                                                    value={formData.category}
+                                                    onChange={handleChange}
+                                                />
+                                            </div>
+                                        </Grid>
 
-                                    <Grid item xs={5}>
-                                        <label><b>Category</b></label>
-                                        <TextField
-                                            required id="outlined-required"  />
-                                    </Grid>
+                                        <Grid item xs={5}>
+                                            <div>
+                                                <label><b>title</b></label>
+                                                <input
+                                                    type="text"
+                                                    id="title"
+                                                    name="title"
+                                                    value={formData.title}
+                                                    onChange={handleChange}
+                                                />
+                                            </div>
+                                        </Grid>
 
-                                    <Grid item xs={5}>
-                                        <label><b>Title</b></label>
-                                        <TextField
-                                            required id="outlined-required" />
-                                    </Grid>
+                                        <button type="submit" variant="contained">Submit</button>
 
+                                    </form>
                                 </Grid>
-
                             </div>
-
                         </DialogContentText>
 
                     </DialogContent>
-                    <DialogActions>
-                        <Button onClick={handleClose} variant='contained'>Submit</Button>
 
-                    </DialogActions>
                 </Dialog>
 
             </div>
@@ -145,8 +216,8 @@ function Integration() {
                         <TableRow>
                             <StyledTableCell>ID</StyledTableCell>
                             <StyledTableCell align="right">Price</StyledTableCell>
-                            <StyledTableCell align="right">Category</StyledTableCell>
-                            <StyledTableCell align="right">Title</StyledTableCell>
+                            <StyledTableCell align="right">category</StyledTableCell>
+                            <StyledTableCell align="right">title</StyledTableCell>
                             <StyledTableCell align="right">Edit</StyledTableCell>
                             <StyledTableCell align="right">Delete</StyledTableCell>
                         </TableRow>
@@ -174,5 +245,6 @@ function Integration() {
         </>
     )
 }
+
 
 export default Integration;
