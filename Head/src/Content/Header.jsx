@@ -16,7 +16,7 @@ const Header = () => {
         <Toolbar>
 
           <Stack direction="row" spacing={5}>
-            <Avatar alt="Remy Sharp" src="https://img.freepik.com/free-vector/hand-drawn-culture-logo-design_23-2149857661.jpg"
+            <Avatar alt="Remy Sharp" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREtSC0JG_yxICGLL1QxzGTMdWGazckAD397Q&usqp=CAU"
               sx={{ width: 240, height: 200, pl: 4, pr: 4 }} />
 
           </Stack>

@@ -38,7 +38,6 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     },
 }));
 
-
 function Integration() {
 
     const [data, setData] = useState([])
@@ -61,8 +60,6 @@ function Integration() {
         setFormData({ price: "", category: "", title: "" });
         setOpen(true);
     };
-
-
 
     useEffect(() => {
         axios.get('https://fakestoreapi.com/products')
@@ -90,7 +87,6 @@ function Integration() {
         setuserData({ ...user, [id]: value });
 
     };
-
 
     const handlePutRequest = (id) => {
 
@@ -164,16 +160,14 @@ function Integration() {
 
     }
 
-
-
-
     return (
         <>
             <div>
+              <div style={{marginBottom: "10px"}}>
                 <Button variant="contained" onClick={handleClickOpen}>
                     Add Details
                 </Button>
-
+                </div>
 
                 <Dialog open={open} onClose={handleClose}>
                     <DialogTitle>{mode}</DialogTitle>
