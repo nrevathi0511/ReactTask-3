@@ -20,17 +20,7 @@ const RegistrationForm = () => {
         setOpen(false);
     };
 
-    //  const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     if (Firstname && Lastname && Cultural && Emailid && Mobilenumber){
-    //         axios.post('https://fakestoreapi.com/products', formData)
-    //         .then(res => {
-    //         setData([...data, res.data]);           
-    //         setFormData(( Firstname:"", Lastname: "", Cultural:"", Emailid:"", Mobilenumber:""));
-    //         })
-    //         .catch(err => console.log(err))
-    //   };
-
+    
     return (
         <div>
             <Button variant="contained" onClick={handleClickOpen}>
