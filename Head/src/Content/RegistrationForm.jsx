@@ -24,8 +24,7 @@ const RegistrationForm = () => {
     return (
         <div>
             <Button variant="contained" onClick={handleClickOpen}>
-                Register Here
-            </Button>
+                Register Heres            </Button>
             <Dialog open={open} onClose={handleClose}>
                 <DialogTitle>Registration Form</DialogTitle>
                 <DialogContent>
